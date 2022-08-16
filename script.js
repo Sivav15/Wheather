@@ -5,14 +5,8 @@ document.getElementsByClassName("button")[0].addEventListener("click", () => {
 });
 function showweather(value) {
   function weather() {
-    return new Promise((resolve, reject) => {
       let url = `https://api.weatherapi.com/v1/current.json?key=f4caa850f3ae41abbc9135031221606&q=${value}&aqi=no`;
       fetch(url)
-        .then((data) => resolve(data))
-        .catch((err) => reject(err));
-    });
-  }
-  weather()
     .then((data) => data.json())
     .then((data1) => {
       console.log(data1);
@@ -27,6 +21,8 @@ function showweather(value) {
       document.getElementsByClassName("head")[5].innerHTML = `Fahrenheit : ${data1.current.temp_f}`;
     })
     .catch((err) => console.log(err));
+  }
+  weather()
 }
 let input_value = document.getElementsByClassName("inputbox")[0].value;
 console.log(input_value);
